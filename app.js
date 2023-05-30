@@ -51,7 +51,7 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-app.set('views, __dirname + ./views');
+app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 const adminRoutes = require('./routes/admin');
