@@ -1,3 +1,7 @@
+process.env.MONGO_USER = 'max';
+process.env.MONGO_PASSWORD = 'Tannhim12';
+process.env.MONGO_DEFAULT_DATABASE = 'shop';
+
 const path = require('path');
 
 const express = require('express');
@@ -24,9 +28,6 @@ const store = new MongoDBStore({
 const csrfProtection = csrf();
 
 const fileStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'images');
-  },
   filename: (req, file, cb) => {
     cb(
       null,
@@ -57,8 +58,11 @@ app.set('view engine', 'ejs');
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const authRoutes = require('./routes/auth');
-
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
 app.use(compression());
 
 app.use(bodyParser.urlencoded({ extended: false }));

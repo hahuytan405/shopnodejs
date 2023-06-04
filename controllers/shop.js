@@ -1,3 +1,6 @@
+process.env.STRIPE_KEY =
+  'sk_test_51N38puCucr96y5yktN3rqiGuJAJVGFfpGhbyQCjqm0rBaTycXa7Byw9fICkVo87sN3CPkEQbMi70SMfYUQVjxt8C00VEo0jaGl';
+
 const fs = require('fs');
 const path = require('path');
 const stripe = require('stripe')(process.env.STRIPE_KEY);
